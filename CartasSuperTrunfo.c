@@ -1,65 +1,71 @@
 #include <stdio.h>
+#include <string.h>
 
 struct Carta {
-    char estado;                  
-    char codigo[4];               
-    char nomeCidade[50];          
-    int populacao;                
-    float area;                   
-    float pib;                    
-    int pontosTuristicos;         
+    char estado[50];
+    char codigo[4];
+    char cidade[50];
+    int populacao;
+    float area;
+    float pib;
+    int pontos;
 };
 
-void cadastrarCarta(struct Carta *carta, int numero) {
-    printf("\n=== Cadastro da Carta %d ===\n", numero);
-
-    printf("Digite o estado (A-H): ");
-    scanf(" %c", &carta->estado);
-
-    printf("Digite o código da carta (ex: A01): ");
-    scanf("%s", carta->codigo);
-
-    printf("Digite o nome da cidade: ");
-    getchar(); 
-    fgets(carta->nomeCidade, sizeof(carta->nomeCidade), stdin);
-
-    size_t len = strlen(carta->nomeCidade);
-    if (len > 0 && carta->nomeCidade[len-1] == '\n') {
-        carta->nomeCidade[len-1] = '\0';
-    }
-
-    printf("Digite a população: ");
-    scanf("%d", &carta->populacao);
-
-    printf("Digite a área (em km²): ");
-    scanf("%f", &carta->area);
-
-    printf("Digite o PIB (em bilhões de reais): ");
-    scanf("%f", &carta->pib);
-
-    printf("Digite o número de pontos turísticos: ");
-    scanf("%d", &carta->pontosTuristicos);
-}
-
-void exibirCarta(struct Carta carta, int numero) {
-    printf("\n=== Carta %d ===\n", numero);
-    printf("Estado: %c\n", carta.estado);
-    printf("Código: %s\n", carta.codigo);
-    printf("Nome da Cidade: %s\n", carta.nomeCidade);
-    printf("População: %d\n", carta.populacao);
-    printf("Área: %.2f km²\n", carta.area);
-    printf("PIB: %.2f bilhões de reais\n", carta.pib);
-    printf("Número de Pontos Turísticos: %d\n", carta.pontosTuristicos);
-}
-
 int main() {
-    struct Carta carta1, carta2;
+    struct Carta c1, c2;
 
-    cadastrarCarta(&carta1, 1);
-    cadastrarCarta(&carta2, 2);
+    printf("\n--- Carta 1 ---\n");
+    printf("Estado: ");
+    fgets(c1.estado, 50, stdin);
+    c1.estado[strcspn(c1.estado, "\n")] = 0;
 
-    exibirCarta(carta1, 1);
-    exibirCarta(carta2, 2);
+    printf("Codigo: ");
+    scanf("%s", c1.codigo);
+    getchar();
 
-    return 0;
-}
+    printf("Cidade: ");
+    fgets(c1.cidade, 50, stdin);
+    c1.cidade[strcspn(c1.cidade, "\n")] = 0;
+
+    printf("Populacao: ");
+    scanf("%d", &c1.populacao);
+
+    printf("Area: ");
+    scanf("%f", &c1.area);
+
+    printf("PIB: ");
+    scanf("%f", &c1.pib);
+
+    printf("Pontos turisticos: ");
+    scanf("%d", &c1.pontos);
+    getchar();
+
+    printf("\n--- Carta 2 ---\n");
+    printf("Estado: ");
+    fgets(c2.estado, 50, stdin);
+    c2.estado[strcspn(c2.estado, "\n")] = 0;
+
+    printf("Codigo: ");
+    scanf("%s", c2.codigo);
+    getchar();
+
+    printf("Cidade: ");
+    fgets(c2.cidade, 50, stdin);
+    c2.cidade[strcspn(c2.cidade, "\n")] = 0;
+
+    printf("Populacao: ");
+    scanf("%d", &c2.populacao);
+
+    printf("Area: ");
+    scanf("%f", &c2.area);
+
+    printf("PIB: ");
+    scanf("%f", &c2.pib);
+
+    printf("Pontos turisticos: ");
+    scanf("%d", &c2.pontos);
+
+    float dens1 = c1.populacao / c1.area;
+    float dens2 = c2.populacao / c2.area;
+    float pib1 = (c1.pib * 1000000000) / c1.populacao;
+    float pib2 = (c
