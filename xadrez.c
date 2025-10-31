@@ -1,18 +1,26 @@
 #include <stdio.h>
+
 int main(){
-int K;
+int T; // torre
   
-printf("Movimento da Torre:\n");
-for(K=1;K<=5;K++){printf("Direita\n");}
+printf("Movimento da Torre:\n"); // anda pra direita
+for(T=1;T<=5;T++){
+printf("Direita\n");
+}
   
-int L=1;
-printf("\nMovimento do Bispo:\n");
-  
-while(L<=5){printf("Cima, Direita\n");L++;}
-int M=1;
-printf("\nMovimento da Rainha:\n");
-  
-do{printf("Esquerda\n");M++;}while(M<=8);
-return 0;
+int B=1; // bispo
+printf("\nMovimento do Bispo:\n"); // anda em cima e direita
+while(B<=5){
+printf("Cima, Direita\n");
+B++;
 }
 
+int R=1; // rainha
+printf("\nMovimento da Rainha:\n"); // anda pra esquerda
+do{
+printf("Esquerda\n");
+R++;
+}while(R<=8);
+
+return 0;
+}
